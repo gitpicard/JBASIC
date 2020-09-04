@@ -1,5 +1,10 @@
 package tech.gitpicard.jbasic.parser;
 
+/**
+ * A list of all the possible tokens that can be found in
+ * source code. Tokens include literals, new lines, keywords,
+ * operators, identifiers, etc.
+ */
 public enum TokenType {
 	EOF,
 	NEW_LINE,
@@ -9,5 +14,43 @@ public enum TokenType {
 	TRUE_LITERAL,
 	FALSE_LITERAL,
 	NULL_LITERAL,
-	IDENTIFIER
+	IDENTIFIER,
+	IF,
+	THEN,
+	ELSE,
+	ELSEIF,
+	END,
+	WHILE,
+	DO,
+	FOR,
+	IN,
+	CONTINUE,
+	BREAK,
+	RETURN,
+	FUNCTION,
+	IMPORT,
+	LET,
+	CALL,
+	NEW,
+	CLASS,
+	PRIVATE,
+	PROTECTED,
+	PUBLIC,
+	EXTENDS,
+	SUPER,
+	SELF,
+	AND,
+	OR,
+	NOT,
+	DOT,	
+	PLUS,
+	MINUS,
+	STAR,
+	SLASH,
+	EQUALS,
+	LESS_THAN,
+	GREATER_THAN,
+	COMMA,
+	LEFT_PARAN,
+	RIGHT_PARAN
 }

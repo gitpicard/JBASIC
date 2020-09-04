@@ -1,7 +1,6 @@
 package tech.gitpicard.jbasic;
 
 public class SyntaxException extends Exception {
-	
 	private String fileName;
 	private int line;
 	private int column;

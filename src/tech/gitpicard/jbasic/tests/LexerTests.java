@@ -12,7 +12,6 @@ import tech.gitpicard.jbasic.parser.Token;
 import tech.gitpicard.jbasic.parser.TokenType;
 
 class LexerTests {
-	
 	private void expect(String source, Token[] expected, boolean ignoreLoc) throws SyntaxException {
 		Lexer lexer = new Lexer();
 		LinkedList<Token> tokens = new LinkedList<>();
@@ -58,7 +57,7 @@ class LexerTests {
 			lex.next();
 		});
 	}
-
+	
 	@Test
 	public void testWhitespace() throws SyntaxException {
 		Token[] expected = {
@@ -217,5 +216,31 @@ class LexerTests {
 				new Token(TokenType.EOF, "unitTest", 1, 1, "")
 		};
 		expect("5hello", expected3, true);
+	}
+	
+	@Test
+	public void testOp() throws SyntaxException {
+		Token[] expected = {
+			new Token(TokenType.PLUS, "unitTest", 1, 1, "+"),
+			new Token(TokenType.MINUS, "unitTest", 1, 2, "-"),
+			new Token(TokenType.MINUS, "unitTest", 1, 4, "-"),
+			new Token(TokenType.EOF, "unitTest", 1, 5, ""),
+		};
+		expect("+- -", expected, false);
+	}
+	
+	@Test
+	public void testComments() throws SyntaxException {
+		Token[] expected = {
+				new Token(TokenType.EOF, "unitTest", 1, 1, "")
+		};
+		expect("' this is a comment", expected, true);
+		
+		Token[] expected1 = {
+				new Token(TokenType.NEW_LINE, "unitTest", 1, 1, "\n"),
+				new Token(TokenType.IDENTIFIER, "unitTest", 1, 1, "test"),
+				new Token(TokenType.EOF, "unitTest", 1, 1, "")
+		};
+		expect("' comment \ntest", expected1, true);
 	}
 }
